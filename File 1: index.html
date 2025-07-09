@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RubeCode Jr. Test Level</title>
+  <script src="play_audio.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>RubeCode Jr. - Test Level</h1>
+  <button onclick="onLevelStart(1)">Start Level 1</button>
+  <button onclick="onBadgeEarned('Rocket Hero')">Earn Rocket Hero Badge</button>
+  <div id="audio-fallback"></div>
+  <script>
+    function onLevelStart(level) {
+      playAudio('level', 'level' + level);
+    }
+    function onBadgeEarned(badgeName) {
+      const fileName = 'badge_' + badgeName.toLowerCase().replace(/\\s+/g, '_');
+      playAudio('badge', fileName);
+    }
+  </script>
+</body>
+</html>
