@@ -1,0 +1,20 @@
+function playAudio(type, name) {
+  let folder = '';
+  if (type === 'level') {
+    folder = 'audio/level_unlocks/';
+  } else if (type === 'badge') {
+    folder = 'audio/badge_achievements/';
+  } else {
+    console.error('Unknown audio type:', type);
+    return;
+  }
+
+  const audio = new Audio(folder + name + '.mp3');
+  audio.play().catch(error => {
+    console.error('Audio playback failed:', error);
+    const fallback = document.getElementById('audio-fallback');
+    if (fallback) {
+      fallback.innerHTML = `<p>🔈 Couldn't play audio: ${name}</p>`;
+    }
+  });
+}
